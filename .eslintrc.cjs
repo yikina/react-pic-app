@@ -1,9 +1,11 @@
 module.exports = {
-  env: { browser: true, es2020: true },
+  env: { browser: true, es2020: true,node:true},
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
@@ -12,3 +14,4 @@ module.exports = {
     'react-refresh/only-export-components': 'warn',
   },
 }
+
