@@ -12,6 +12,7 @@ pnpm run dev
 
 ## 项目根目录
 
+```
 ├─ src
 ├─api // 请求相关
 ├─assets // 图片以及 svg 相关
@@ -24,7 +25,5 @@ pnpm run dev
 └─store // redux 相关文件
 App.tsx // 根组件
 main.tsx // 入口文件
-
-```
 
 ```
