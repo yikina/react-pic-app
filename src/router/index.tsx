@@ -2,6 +2,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import Home from '&/views/Home';
 import Square from '&/views/Square';
 import Add from '&/views/Add';
+import Discover from '&/views/Discover';
+import Me from '&/views/Me';
 
 const routers = [
 	{
@@ -15,6 +17,14 @@ const routers = [
 	{
 		path: '/add',
 		element: <Add />
+	},
+	{
+		path: '/discover',
+		element: <Discover />
+	},
+	{
+		path: '/me',
+		element: <Me />
 	}
 ];
 /*- home 首页
@@ -23,7 +33,8 @@ const routers = [
 - discover 发现
 - recommend 推荐
 - focus 关注
-- message 消息 */
+- message 消息 
+-me 我的*/
 
 const Router = () => {
 	return createBrowserRouter(routers);

@@ -1,12 +1,12 @@
 import Footer from '&/components/Footer';
 
-function Home() {
+function Discover() {
 	return (
 		<div>
-			这里是Home
+			这里是Discover
 			<Footer />
 		</div>
 	);
 }
 
-export default Home;
+export default Discover;
