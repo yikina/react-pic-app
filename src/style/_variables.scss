@@ -2,3 +2,10 @@
 
 $fontsizeUnit: math.div(1rem, 16);
 
+// * 统一页面链接格式
+@mixin normalLink {
+        color: black;
+        &.active{
+            color:rgb(150, 143, 141)
+        }
+}

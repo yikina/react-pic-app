@@ -2,7 +2,6 @@
     width:100%;
     position: fixed;
     display:flex;
-    // background-color: aqua;
     background-color: #fff;
     justify-content: space-around;
     bottom: 0rem;
@@ -10,13 +9,10 @@
     padding: 1rem 0 ;
     z-index: 9999;
 
-    a {
-        color: black;
-       
-    }
-    a.active{
-        color:rgb(150, 143, 141)
-    }
+  a{
+    @include normalLink
+  }
+    
     
     
   

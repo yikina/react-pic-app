@@ -1,14 +1,27 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 import Home from '&/views/Home';
 import Square from '&/views/Square';
 import Add from '&/views/Add';
 import Discover from '&/views/Discover';
 import Me from '&/views/Me';
+import Recommend from '&/views/Home/Recommend/index';
+import Focus from '&/views/Home/Focus';
 
+// Todo : home下主页面，默认路由跳转-home/recomand
 const routers = [
 	{
 		path: '/home',
-		element: <Home />
+		element: <Home />,
+		children: [
+			{
+				path: 'recommend',
+				element: <Recommend />
+			},
+			{
+				path: 'focus',
+				element: <Focus />
+			}
+		]
 	},
 	{
 		path: '/square',
@@ -25,8 +38,13 @@ const routers = [
 	{
 		path: '/me',
 		element: <Me />
+	},
+	{
+		path: '/',
+		element: <Navigate to="/home/recommend" />
 	}
 ];
+
 /*- home 首页
 - square 广场
 - add 发送笔记
