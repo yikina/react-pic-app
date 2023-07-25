@@ -28,5 +28,28 @@
    }
    .bottom{
     @include title(25vh);
+    &-content{
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        background: linear-gradient(1deg, #f6f6f6, transparent);
+        &-item{
+            display: flex;
+            justify-content: space-around;
+            background: #fff;
+            border-radius: .3rem;
+            padding: 0 1rem;
+            margin-bottom: .3rem;
+
+            i {
+                font-size: 1.2rem;
+            }
+
+            li {
+                margin-left: .5rem;
+                line-height: 2rem;
+            }
+        }
+}
    }
 }

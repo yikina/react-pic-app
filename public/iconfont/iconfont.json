@@ -1,0 +1,72 @@
+{
+	"id": "4182940",
+	"name": "video-app",
+	"font_family": "iconfont",
+	"css_prefix_text": "icon-",
+	"description": "",
+	"glyphs": [
+		{
+			"icon_id": "5633887",
+			"name": "camera",
+			"font_class": "camera",
+			"unicode": "ef5d",
+			"unicode_decimal": 61277
+		},
+		{
+			"icon_id": "5633891",
+			"name": "car-alt",
+			"font_class": "car-alt",
+			"unicode": "ef5e",
+			"unicode_decimal": 61278
+		},
+		{
+			"icon_id": "5633892",
+			"name": "cannabis",
+			"font_class": "cannabis",
+			"unicode": "ef5f",
+			"unicode_decimal": 61279
+		},
+		{
+			"icon_id": "5633921",
+			"name": "chess",
+			"font_class": "chess",
+			"unicode": "ef68",
+			"unicode_decimal": 61288
+		},
+		{
+			"icon_id": "5633959",
+			"name": "comments",
+			"font_class": "comments",
+			"unicode": "ef7f",
+			"unicode_decimal": 61311
+		},
+		{
+			"icon_id": "5633978",
+			"name": "cut",
+			"font_class": "cut",
+			"unicode": "ef90",
+			"unicode_decimal": 61328
+		},
+		{
+			"icon_id": "5634264",
+			"name": "paint-brush",
+			"font_class": "paint-brush",
+			"unicode": "f062",
+			"unicode_decimal": 61538
+		},
+		{
+			"icon_id": "5634375",
+			"name": "smile-beam",
+			"font_class": "smile-beam",
+			"unicode": "f0c1",
+			"unicode_decimal": 61633
+		},
+		{
+			"icon_id": "5634452",
+			"name": "th-list",
+			"font_class": "th-list",
+			"unicode": "f104",
+			"unicode_decimal": 61700
+		}
+	]
+}

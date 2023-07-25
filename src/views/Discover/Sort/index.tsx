@@ -16,6 +16,29 @@ function Sort() {
 		setHotWord(words);
 	}, []);
 
+	const iconList: string[] = [
+		'icon-comments',
+		'icon-smile-beam',
+		'icon-paint-brush',
+		'icon-cut',
+		'icon-car-alt',
+		'icon-camera',
+		'icon-chess',
+		'icon-cannabis',
+		'icon-th-list'
+	];
+	const itemList: string[] = [
+		'生活',
+		'幽默',
+		'艺术',
+		'时尚',
+		'旅行',
+		'摄影',
+		'爱好',
+		'手工',
+		'记录'
+	];
+
 	return (
 		<div className="sort">
 			<h3 className="top">热搜</h3>
@@ -25,6 +48,16 @@ function Sort() {
 				})}
 			</div>
 			<h3 className="bottom">分类</h3>
+			<ul className="bottom-content">
+				{itemList.map((item, index) => {
+					return (
+						<div className="bottom-content-item" key={index}>
+							<i className={'iconfont ' + iconList[index]} />
+							<li>{item}</li>
+						</div>
+					);
+				})}
+			</ul>
 		</div>
 	);
 }
