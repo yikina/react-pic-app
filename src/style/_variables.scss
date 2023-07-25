@@ -10,3 +10,11 @@ $basicColor:rgb(150, 143, 141);
             color:rgb(150, 143, 141)
         }
 }
+
+// * 超出内容显示省略号
+@mixin ellipsis($width:9rem) {
+    width:$width;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
