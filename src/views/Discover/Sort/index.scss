@@ -11,14 +11,15 @@
     @include title;
         &-content{
         @include title(11%);
-        width: 100%;
+        width: 100vw;
         color:$basicColor;
         display: grid;
+        margin-top:1vh;
         grid-template-columns: repeat(2,1fr);
         grid-template-rows: repeat(4,1fr);
         gap:  1rem;
         div{
-            @include ellipsis;
+            @include ellipsis(100%);
         }
 
         
@@ -26,6 +27,6 @@
     }
    }
    .bottom{
-    @include title(22%);
+    @include title(25vh);
    }
 }
