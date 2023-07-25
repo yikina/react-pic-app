@@ -7,7 +7,6 @@ import Me from '&/views/Me';
 import Recommend from '&/views/Home/Recommend/index';
 import Focus from '&/views/Home/Focus';
 
-// Todo : home下主页面，默认路由跳转-home/recomand
 const routers = [
 	{
 		path: '/home',

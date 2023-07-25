@@ -1,6 +1,7 @@
 @use 'sass:math';
 
 $fontsizeUnit: math.div(1rem, 16);
+$basicColor:rgb(150, 143, 141);
 
 // * 统一页面链接格式
 @mixin normalLink {

@@ -1,0 +1,27 @@
+//热搜、分类标题样式抽象复用
+@mixin title($height: 5%) {
+    position:absolute;
+    left: 0.5rem;
+    padding: 0 0.5rem;
+    top:$height
+  }
+
+.sort{
+   .top{
+    @include title;
+        &-content{
+        @include title(11%);
+        color:$basicColor;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(4,1fr);
+        gap:  1rem;
+
+        
+    
+    }
+   }
+   .bottom{
+    @include title(22%);
+   }
+}
