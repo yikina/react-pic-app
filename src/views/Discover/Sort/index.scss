@@ -11,6 +11,7 @@
     @include title;
         &-content{
         @include title(11%);
+        width: 100%;
         color:$basicColor;
         display: grid;
         grid-template-columns: repeat(2,1fr);
