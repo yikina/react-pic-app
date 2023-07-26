@@ -6,6 +6,20 @@
 	"description": "",
 	"glyphs": [
 		{
+			"icon_id": "1309",
+			"name": "退出",
+			"font_class": "tuichu",
+			"unicode": "e600",
+			"unicode_decimal": 58880
+		},
+		{
+			"icon_id": "1338",
+			"name": "文本输入",
+			"font_class": "wenbenshuru",
+			"unicode": "e601",
+			"unicode_decimal": 58881
+		},
+		{
 			"icon_id": "5633887",
 			"name": "camera",
 			"font_class": "camera",
