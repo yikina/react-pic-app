@@ -7,14 +7,18 @@
   }
 
 .sort{
+    position: relative;
+    height:100%;
+    width:100%;
    .top{
     @include title;
         &-content{
-        @include title(11%);
-        width: 100vw;
+        @include title(11rem);
         color:$basicColor;
         display: grid;
-        margin-top:1vh;
+        width: 90vw;
+        top: 12%;
+        margin-top:1%;
         grid-template-columns: repeat(2,1fr);
         grid-template-rows: repeat(4,1fr);
         gap:  1rem;
@@ -27,16 +31,21 @@
     }
    }
    .bottom{
-    @include title(25vh);
+    @include title(30%);
     &-content{
         list-style: none;
         display: grid;
+        width: 90vw;
         grid-template-columns: 1fr 1fr 1fr;
-        background: linear-gradient(1deg, #f6f6f6, transparent);
+        gap: 1rem;
+        position: absolute;
+        top: 37%;
+        margin-top: 1rem;
+        left: -5%;
         &-item{
             display: flex;
             justify-content: space-around;
-            background: #fff;
+            background: linear-gradient(1deg, #f6f6f6, transparent);
             border-radius: .3rem;
             padding: 0 1rem;
             margin-bottom: .3rem;
@@ -51,5 +60,5 @@
             }
         }
 }
-   }
+}
 }

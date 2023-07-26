@@ -27,7 +27,7 @@ export default defineConfig({
 		preprocessorOptions: {
 			scss: {
 				//引入项目自定义变量
-				additionalData: `@import "./src/style/_variables.scss";`
+				additionalData: `@import "./src/style/index.scss";`
 			}
 		}
 	},
