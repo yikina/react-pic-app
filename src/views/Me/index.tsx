@@ -35,10 +35,10 @@ function Me() {
 
 			<div className="me-content">
 				<Button type="text" block>
-					收藏
+					我收藏的
 				</Button>
 				<Button type="text" block>
-					记录
+					我发表的
 				</Button>
 			</div>
 			<Divider />
