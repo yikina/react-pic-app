@@ -17,6 +17,7 @@ pnpm run dev
 ├─api // 请求相关
 ├─assets // 图片以及 svg 相关
 ├─style // 公共样式
+├─service //封装axios
 ├─components // 抽象出可复用的 UI 组件
 ├─utils // 工具类函数和相关配置
 ├─types // ts 相关类型约束文件
