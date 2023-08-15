@@ -3,9 +3,9 @@ import Home from '&/views/Home';
 import Square from '&/views/Square';
 import Add from '&/views/Add';
 import Discover from '&/views/Discover';
-import Me from '&/views/Me';
 import Recommend from '&/views/Home/Recommend/index';
 import Focus from '&/views/Home/Focus';
+import InitMe from '&/views/Me';
 
 const routers = [
 	{
@@ -36,7 +36,7 @@ const routers = [
 	},
 	{
 		path: '/me',
-		element: <Me />
+		element: <InitMe />
 	},
 	{
 		path: '/',
