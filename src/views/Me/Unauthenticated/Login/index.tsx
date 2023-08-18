@@ -15,7 +15,11 @@ export default function Login() {
 					name={'password'}
 					rules={[{ required: true, message: '请输入密码' }]}
 				>
-					<Input placeholder={'密码'} type="password" id={'password'}></Input>
+					<Input.Password
+						placeholder={'密码'}
+						type="password"
+						id={'password'}
+					></Input.Password>
 				</Form.Item>
 				<Form.Item>
 					<Button htmlType={'submit'} block>
