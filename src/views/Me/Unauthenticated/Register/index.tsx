@@ -43,7 +43,7 @@ export default function Register() {
 				></Input>
 			</Form.Item>
 			<Form.Item>
-				<Button htmlType={'submit'} type={'primary'}>
+				<Button htmlType={'submit'} block>
 					注册
 				</Button>
 			</Form.Item>

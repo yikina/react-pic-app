@@ -18,7 +18,7 @@ export default function Login() {
 					<Input placeholder={'密码'} type="password" id={'password'}></Input>
 				</Form.Item>
 				<Form.Item>
-					<Button htmlType={'submit'} type={'primary'}>
+					<Button htmlType={'submit'} block>
 						登录
 					</Button>
 				</Form.Item>
