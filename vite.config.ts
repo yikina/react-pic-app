@@ -32,7 +32,8 @@ export default defineConfig({
 		}
 	},
 	esbuild: {
-		drop: ['console', 'debugger']
+		//打包时更改
+		// drop: ['console', 'debugger']
 	},
 	server: {
 		port: 3022 //启动端口
