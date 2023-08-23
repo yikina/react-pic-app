@@ -1,13 +1,10 @@
-import Request from '&/service/index.mjs';
+import { request } from '&/service';
 import config from './config';
 
-// const baseApi = new Request({ baseURL: config.baseURL, verbose: false })
-
 /**
- * 用户注册
- * @data username:string ,password:string
+ * 获取咖啡
+ *
  */
-// export async function register(options){
-//     const res = await baseApi.post(config.register)
-//     return res
-// }
+export const getCoffees = async () => {
+	return request('GET', config.coffees, {});
+};

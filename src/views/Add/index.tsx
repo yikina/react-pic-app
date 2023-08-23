@@ -1,9 +1,10 @@
 import Footer from '&/components/Footer';
 import { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import temPic from '&/assets/temPic';
 import { Button, Divider, Input, Modal, Upload } from 'antd';
 import './index.scss';
+import { getCoffees } from '&/api';
 
 const getBase64 = (file: RcFile): Promise<string> =>
 	new Promise((resolve, reject) => {
@@ -43,6 +44,15 @@ function Add() {
 
 	const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) =>
 		setImgList(newFileList);
+	//TODO: DELETE
+	const getCoffeesRequest = async () => {
+		const res = await getCoffees();
+		console.log(res, 'res--');
+	};
+
+	useEffect(() => {
+		getCoffeesRequest();
+	});
 
 	return (
 		<div className="add">
