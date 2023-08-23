@@ -1,5 +1,13 @@
 import axios, { AxiosResponse } from 'axios';
-import { handleRequestHeader, handleNetworkError } from './tools';
+import {
+	handleRequestHeader,
+	handleGeneralError,
+	handleNetworkError
+} from './tools';
+/**
+ * @description: wrap axios request
+ * @use const [err, res] = await request('GET', url, {});
+ */
 
 export interface IResponse<T> {
 	data: T;
@@ -29,10 +37,13 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
 	(response) => {
-		return response.data;
+		if (response.data.statusCode === 200 || response.data.statusCode === 201) {
+			return response.data;
+		} else {
+			handleGeneralError(response.data.statusCode, response.data.message);
+		}
 	},
 	(err) => {
-		console.log(err, 'err--');
 		handleNetworkError(err.response.status);
 		return Promise.reject(err.response.data);
 	}
@@ -44,8 +55,8 @@ export const request = <T>(
 	data: IAnyObject,
 	params: IAnyObject = {},
 	clearFn?: IFn
-): Promise<IResponse<T>> => {
-	return new Promise((resolve, reject) => {
+): Promise<[any, IResponse<T> | undefined]> => {
+	return new Promise((resolve) => {
 		let requestPromise: Promise<AxiosResponse>;
 
 		switch (method) {
@@ -58,7 +69,7 @@ export const request = <T>(
 				break;
 			}
 			case 'DELETE': {
-				requestPromise = axios.delete(url, { params });
+				requestPromise = axios.delete(url, { data, params });
 				break;
 			}
 			case 'PUT': {
@@ -70,7 +81,7 @@ export const request = <T>(
 				break;
 			}
 			default: {
-				reject(new Error('Unsupported method'));
+				resolve([new Error('Unsupported method'), undefined]);
 				return;
 			}
 		}
@@ -83,10 +94,10 @@ export const request = <T>(
 				} else {
 					res = result.data as IResponse<T>;
 				}
-				resolve(res);
+				resolve([null, res]);
 			})
 			.catch((err) => {
-				reject(err);
+				resolve([err, undefined]);
 			});
 	});
 };

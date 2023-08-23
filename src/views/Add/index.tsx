@@ -46,8 +46,8 @@ function Add() {
 		setImgList(newFileList);
 	//TODO: DELETE
 	const getCoffeesRequest = async () => {
-		const res = await getCoffees();
-		console.log(res, 'res--');
+		const [err, res] = await getCoffees();
+		console.log([err, res], 'coffees err+res');
 	};
 
 	useEffect(() => {

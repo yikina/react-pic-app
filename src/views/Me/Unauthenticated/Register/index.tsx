@@ -1,3 +1,4 @@
+import { register } from '&/api';
 import { Button, Form, Input, message } from 'antd';
 
 export default function Register() {
@@ -21,8 +22,21 @@ export default function Register() {
 			message.error('密码必须包含一个大写字符和一个特殊字符，且长度大于8位');
 			return;
 		} else {
-			//TODO: DELETE
-			message.info('密码正确');
+			const registerData = {
+				username: values.username,
+				password: values.password
+			};
+			registerRequest(registerData);
+		}
+	};
+
+	const registerRequest = async (registerData: {
+		username: string;
+		password: string;
+	}) => {
+		const [err, res] = await register(registerData);
+		if (!err && res) {
+			message.info('注册成功');
 		}
 	};
 
