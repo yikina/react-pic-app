@@ -6,9 +6,11 @@ export const handleRequestHeader = (config: any) => {
 	return config;
 };
 
-export const handleNetworkError = (errStatus?: number): void => {
+export const handleNetworkError = (
+	errStatus?: number,
+	errmsg?: string
+): void => {
 	const networkErrMap: any = {
-		'400': '用户名已存在',
 		'401': '未授权，请重新登录',
 		'403': '拒绝访问',
 		'404': '请求错误，未找到该资源',
@@ -22,7 +24,7 @@ export const handleNetworkError = (errStatus?: number): void => {
 		'505': 'http版本不支持该请求'
 	};
 	if (errStatus) {
-		message.error(networkErrMap[errStatus] ?? `其他连接错误 --${errStatus}`);
+		message.error(networkErrMap[errStatus] ?? `错误: ${errmsg}`);
 		return;
 	}
 

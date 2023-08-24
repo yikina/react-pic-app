@@ -1,4 +1,5 @@
 import { register } from '&/api';
+import { authData } from '&/types';
 import { Button, Form, Input, message } from 'antd';
 
 export default function Register() {
@@ -30,10 +31,7 @@ export default function Register() {
 		}
 	};
 
-	const registerRequest = async (registerData: {
-		username: string;
-		password: string;
-	}) => {
+	const registerRequest = async (registerData: authData) => {
 		const [err, res] = await register(registerData);
 		if (!err && res) {
 			message.info('注册成功');

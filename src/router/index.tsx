@@ -5,7 +5,8 @@ import Add from '&/views/Add';
 import Discover from '&/views/Discover';
 import Recommend from '&/views/Home/Recommend/index';
 import Focus from '&/views/Home/Focus';
-import InitMe from '&/views/Me';
+import Auth from '&/views/Auth';
+import Me from '&/views/Me';
 
 const routers = [
 	{
@@ -36,7 +37,11 @@ const routers = [
 	},
 	{
 		path: '/me',
-		element: <InitMe />
+		element: <Me />
+	},
+	{
+		path: '/auth',
+		element: <Auth />
 	},
 	{
 		path: '/',

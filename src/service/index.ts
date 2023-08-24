@@ -44,18 +44,18 @@ axios.interceptors.response.use(
 		}
 	},
 	(err) => {
-		handleNetworkError(err.response.status);
+		handleNetworkError(err.response.status, err.response.data.message);
 		return Promise.reject(err.response.data);
 	}
 );
 
-export const request = <T>(
+export const request = (
 	method: 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH',
 	url: string,
 	data: IAnyObject,
 	params: IAnyObject = {},
 	clearFn?: IFn
-): Promise<[any, IResponse<T> | undefined]> => {
+): Promise<[any, any]> => {
 	return new Promise((resolve) => {
 		let requestPromise: Promise<AxiosResponse>;
 
@@ -88,11 +88,11 @@ export const request = <T>(
 
 		requestPromise
 			.then((result) => {
-				let res: IResponse<T>;
+				let res: any;
 				if (clearFn !== undefined) {
-					res = clearFn(result.data) as unknown as IResponse<T>;
+					res = clearFn(result.data);
 				} else {
-					res = result.data as IResponse<T>;
+					res = result.data;
 				}
 				resolve([null, res]);
 			})

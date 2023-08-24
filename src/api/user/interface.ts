@@ -19,3 +19,11 @@ export const register = async (body: {
 }) => {
 	return request('POST', config.register, body);
 };
+
+/**
+ * 用户登录
+ * @body {username:string,password:string}
+ */
+export const login = async (body: { username: string; password: string }) => {
+	return request('POST', config.login, body);
+};
