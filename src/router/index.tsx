@@ -1,12 +1,15 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
-import Home from '&/views/Home';
-import Square from '&/views/Square';
-import Add from '&/views/Add';
-import Discover from '&/views/Discover';
-import Recommend from '&/views/Home/Recommend/index';
-import Focus from '&/views/Home/Focus';
-import Auth from '&/views/Auth';
-import Me from '&/views/Me';
+import {
+	Home,
+	Square,
+	Add,
+	Discover,
+	Recommend,
+	Focus,
+	Auth,
+	Me
+} from './constant';
+import { PrivateRoute } from './auth';
 
 const routers = [
 	{
@@ -37,7 +40,7 @@ const routers = [
 	},
 	{
 		path: '/me',
-		element: <Me />
+		element: <PrivateRoute component={Me} />
 	},
 	{
 		path: '/auth',

@@ -1,14 +1,12 @@
 import Footer from '&/components/Footer';
-import { NavLink } from 'react-router-dom';
-import './index.scss';
+import { Outlet } from 'react-router-dom';
+import { Header } from '&/components/Header';
 
 function Home() {
 	return (
 		<div>
-			<div className="header">
-				<NavLink to="/home/recommend">推荐</NavLink>
-				<NavLink to="/home/focus">关注</NavLink>
-			</div>
+			<Header />
+			<Outlet />
 			<Footer />
 		</div>
 	);
