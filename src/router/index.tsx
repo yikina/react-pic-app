@@ -32,7 +32,7 @@ const routers = [
 	},
 	{
 		path: '/add',
-		element: <Add />
+		element: <PrivateRoute component={Add} />
 	},
 	{
 		path: '/discover',
