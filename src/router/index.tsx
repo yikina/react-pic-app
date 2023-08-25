@@ -7,7 +7,8 @@ import {
 	Recommend,
 	Focus,
 	Auth,
-	Me
+	Me,
+	NotFound
 } from './constant';
 import { PrivateRoute } from './auth';
 
@@ -49,17 +50,12 @@ const routers = [
 	{
 		path: '/',
 		element: <Navigate to="/home/recommend" />
+	},
+	{
+		path: '*',
+		element: <NotFound />
 	}
 ];
-
-/*- home 首页
-- square 广场
-- add 发送笔记
-- discover 发现
-- recommend 推荐
-- focus 关注
-- message 消息 
--me 我的*/
 
 const Router = () => {
 	return createBrowserRouter(routers);

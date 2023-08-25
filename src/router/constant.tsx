@@ -8,5 +8,6 @@ const Recommend = LazyLoad(() => import('&/views/Home/Recommend'));
 const Focus = LazyLoad(() => import('&/views/Home/Focus'));
 const Auth = LazyLoad(() => import('&/views/Auth'));
 const Me = LazyLoad(() => import('&/views/Me'));
+const NotFound = LazyLoad(() => import('&/views/NotFound'));
 
-export { Home, Square, Add, Discover, Recommend, Focus, Auth, Me };
+export { Home, Square, Add, Discover, Recommend, Focus, Auth, Me, NotFound };
