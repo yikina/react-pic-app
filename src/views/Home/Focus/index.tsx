@@ -1,5 +1,5 @@
 function Focus() {
-	const isLogined = localStorage.getItem('token');
+	const isLogined = Boolean(localStorage.getItem('token'));
 	return (
 		<div>
 			{isLogined || <div>登录后解锁更多精彩</div>}
