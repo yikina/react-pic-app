@@ -35,10 +35,14 @@ axios.interceptors.request.use(
 	}
 );
 
+const successCode = [200, 201, 204];
 axios.interceptors.response.use(
 	(response) => {
-		if (response.data.statusCode === 200 || response.data.statusCode === 201) {
+		//!response.data.statusCode为了适配OSS图片删除无返回值的情况
+		if (successCode.includes(response.data.statusCode as number)) {
 			return response.data;
+		} else if (!response.data.statusCode) {
+			return;
 		} else {
 			handleGeneralError(response.data.statusCode, response.data.message);
 		}
