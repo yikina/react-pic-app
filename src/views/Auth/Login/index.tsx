@@ -1,4 +1,5 @@
 import { login } from '&/api';
+import { saveUserInfo } from '&/store';
 import { authData, loginedData } from '&/types';
 import { Button, Form, Input, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
@@ -16,6 +17,7 @@ export default function Login() {
 			const [err, res]: [any, loginedData | undefined] = await login(loginData);
 			if (!err && res) {
 				localStorage.setItem('token', res.accessToken);
+				saveUserInfo(res);
 				message.info('登录成功');
 				navigate('/me', { replace: true });
 			}

@@ -5,9 +5,16 @@ export interface authData {
 
 export interface loginedData {
 	accessToken: string;
-	data: {
-		username: string;
+	user: {
+		username?: string;
 		avatar?: string;
 		id: string;
+		fan: number;
+		following: number;
+		insignia: number;
 	};
 }
+
+export type userInfo = Omit<loginedData, 'user'> & {
+	user: Omit<loginedData['user'], 'id'>;
+};
