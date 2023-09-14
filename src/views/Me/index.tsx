@@ -3,11 +3,13 @@ import { Button, Divider, Empty } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
 import Footer from '&/components/Footer';
+import { clearUserInfo } from '&/store/modules/userInfo';
 
 function Me() {
 	const naviagte = useNavigate();
 	const logout = () => {
 		localStorage.removeItem('token');
+		clearUserInfo();
 		naviagte('/auth');
 	};
 	return (

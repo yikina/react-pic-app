@@ -1,4 +1,5 @@
 import { Navigate } from 'react-router-dom';
+import { clearUserInfo } from '&/store/modules/userInfo';
 
 export const PrivateRoute = ({ component }: any) => {
 	const isLogined = localStorage.getItem('token');
@@ -17,6 +18,7 @@ export const PrivateRoute = ({ component }: any) => {
 	if (currentTime >= exp) {
 		console.log('Token已过期');
 		localStorage.removeItem('token');
+		clearUserInfo();
 	}
 	const Component = component;
 	return <Component />;
