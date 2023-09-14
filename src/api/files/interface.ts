@@ -1,4 +1,5 @@
 import { request } from '&/service';
+import { addNoteData } from '&/types/file';
 import axios from 'axios';
 import config from './config';
 
@@ -24,10 +25,18 @@ export const deletePic = (
 				Authorization: sign
 			}
 		})
-		.then((response) => {
+		.then(() => {
 			return;
 		})
 		.catch((error) => {
 			console.error(error);
 		});
+};
+
+/**
+ * @description 发布笔记
+ * @body addNoteData
+ */
+export const addNote = async (body: addNoteData) => {
+	return request('POST', config.addNote, body);
 };

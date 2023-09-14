@@ -16,7 +16,7 @@ export interface IResponse<T> {
 }
 
 export interface IAnyObject {
-	[index: string]: unknown;
+	[index: string]: any;
 }
 
 export type IFn = (data: IResponse<any>) => unknown;

@@ -6,3 +6,11 @@ export interface signData {
 	host: string;
 	expire: string;
 }
+
+export interface addNoteData {
+	title: string;
+	content: string;
+	pic: string;
+	avatar: string | undefined;
+	username: string | undefined;
+}
