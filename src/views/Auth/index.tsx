@@ -6,7 +6,7 @@ import { Button } from 'antd';
 import './index.scss';
 
 export default function Auth() {
-	const [isLogin, setIsLogin] = useState(false);
+	const [isLogin, setIsLogin] = useState(true);
 
 	const handleClick = () => {
 		setIsLogin(!isLogin);
