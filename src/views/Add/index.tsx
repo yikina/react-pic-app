@@ -81,7 +81,7 @@ function Add() {
 				? temBody.pic
 				: imgList.map((item) => item.url).join(','),
 			avatar: user?.info.avatar,
-			username: user?.info.username
+			user_id: user?.info.id
 		};
 
 		if (!user) {
@@ -137,7 +137,7 @@ function Add() {
 
 	useEffect(() => {
 		getPicSignRequest();
-	}, [user.username]);
+	}, [user.info.id]);
 
 	//保留登录之前上传的图片
 	useEffect(() => {

@@ -12,5 +12,5 @@ export interface addNoteData {
 	content: string;
 	pic: string;
 	avatar: string | undefined;
-	username: string | undefined;
+	user_id: string | undefined;
 }
