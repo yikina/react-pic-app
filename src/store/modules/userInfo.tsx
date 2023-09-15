@@ -1,24 +1,25 @@
 import { proxy } from 'valtio';
-import { userInfo } from '&/types';
 import _ from 'lodash';
 
-const initialUserInfo: userInfo = {
-	accessToken: '',
-	user: {
-		username: '',
-		avatar: '',
-		fan: 0,
-		following: 0,
-		insignia: 0
-	}
-};
+//TODO :delte
+// const initialUserInfo = {
+// 	accessToken: '',
+// 	info: {
+// 		username: '',
+// 		avatar: '',
+// 		fan: 0,
+// 		following: 0,
+// 		insignia: 0,
+// 		id:''
+// 	}
+// };
 
-export const state = proxy<userInfo>(initialUserInfo);
+// export const state = proxy<userInfo>(initialUserInfo);
 
-export const saveUserInfo = (newInfo: userInfo) => {
-	state.user = _.cloneDeep(newInfo.user);
-};
+// export const saveUserInfo = (newInfo: userInfo) => {
+// 	state.info = _.cloneDeep(newInfo.info);
+// };
 
-export const clearUserInfo = () => {
-	state.user = _.cloneDeep(initialUserInfo.user);
-};
+// export const clearUserInfo = () => {
+// 	state.info = _.cloneDeep(initialUserInfo.info);
+// };

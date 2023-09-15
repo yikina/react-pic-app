@@ -6,10 +6,9 @@ import { Button, Divider, Form, Input, Modal, Upload, message } from 'antd';
 import './index.scss';
 import { addNote, deletePic, getPicSign } from '&/api/files';
 import { addNoteData, signData } from '&/types/file';
-import { useSnapshot } from 'valtio';
-import { state } from '&/store';
 import { useNavigate } from 'react-router-dom';
 import config from '&/api/files/config';
+import { useUserInfo } from '&/hooks';
 
 const getBase64 = (file: RcFile): Promise<string> =>
 	new Promise((resolve, reject) => {
@@ -24,7 +23,7 @@ function Add() {
 	const naviagte = useNavigate();
 	const jsonString = sessionStorage.getItem('add');
 	const temBody = (jsonString && JSON.parse(jsonString)) || '';
-	const { user } = useSnapshot(state);
+	const { user, deleteuser } = useUserInfo();
 	//OSS上传img
 	const [OSSData, setOSSData] = useState<signData>();
 	const [previewOpen, setPreviewOpen] = useState(false);
@@ -81,14 +80,14 @@ function Add() {
 			pic: temBody.pic
 				? temBody.pic
 				: imgList.map((item) => item.url).join(','),
-			avatar: user.avatar,
-			username: user.username
+			avatar: user?.info.avatar,
+			username: user?.info.username
 		};
 
-		if (!user.username) {
+		if (!user) {
 			//如登录过期，存储编辑后的信息,再次登录后自动填充
 			message.info('登录过期，请重新登录');
-			localStorage.removeItem('token');
+			deleteuser();
 			sessionStorage.setItem('add', JSON.stringify(body));
 			naviagte('/auth');
 			return;
