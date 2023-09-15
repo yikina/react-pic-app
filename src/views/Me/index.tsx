@@ -3,7 +3,9 @@ import { Button, Divider, Empty } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
 import Footer from '&/components/Footer';
-import { clearUserInfo } from '&/store/modules/userInfo';
+import { clearUserInfo, state } from '&/store/modules/userInfo';
+import { useSnapshot } from 'valtio';
+import { useEffect } from 'react';
 
 function Me() {
 	const naviagte = useNavigate();
@@ -12,6 +14,13 @@ function Me() {
 		clearUserInfo();
 		naviagte('/auth');
 	};
+	const { user } = useSnapshot(state);
+
+	useEffect(() => {
+		if (!user.username) {
+			logout();
+		}
+	}, []);
 	return (
 		<div className="me">
 			<div className="me-bg">
@@ -24,18 +33,21 @@ function Me() {
 			<div className="me-header">
 				<img src={Pic.userFace} alt="" />
 				<div className="me-header-name">
-					<h3>yikina</h3>
+					<h3>{user.username}</h3>
 					<i className="iconfont icon-wenbenshuru" />
 				</div>
 				<div className="tips">
 					<div>
-						0<h5>粉丝</h5>
+						{user.fan}
+						<h5>粉丝</h5>
 					</div>
 					<div>
-						0<h5>关注</h5>
+						{user.following}
+						<h5>关注</h5>
 					</div>
 					<div>
-						0<h5>徽章</h5>
+						{user.insignia}
+						<h5>徽章</h5>
 					</div>
 				</div>
 				<div className="ip">
