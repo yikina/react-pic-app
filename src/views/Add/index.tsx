@@ -1,7 +1,7 @@
 import Footer from '&/components/Footer';
 import { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
 import { useEffect, useState } from 'react';
-import temPic from '&/assets/temPic';
+import { v4 as uuidv4 } from 'uuid';
 import { Button, Divider, Form, Input, Modal, Upload, message } from 'antd';
 import './index.scss';
 import { addNote, deletePic, getPicSign } from '&/api/files';
@@ -9,6 +9,7 @@ import { addNoteData, signData } from '&/types/file';
 import { useSnapshot } from 'valtio';
 import { state } from '&/store';
 import { useNavigate } from 'react-router-dom';
+import config from '&/api/files/config';
 
 const getBase64 = (file: RcFile): Promise<string> =>
 	new Promise((resolve, reject) => {
@@ -19,22 +20,23 @@ const getBase64 = (file: RcFile): Promise<string> =>
 	});
 
 function Add() {
+	const [form] = Form.useForm();
 	const naviagte = useNavigate();
-	const temBody = JSON.parse(sessionStorage.getItem('add') || '{}');
+	const jsonString = sessionStorage.getItem('add');
+	const temBody = (jsonString && JSON.parse(jsonString)) || '';
 	const { user } = useSnapshot(state);
 	//OSS上传img
 	const [OSSData, setOSSData] = useState<signData>();
 	const [previewOpen, setPreviewOpen] = useState(false);
 	const [previewImg, setPreviewImg] = useState('');
 	const [previewTitle, setPreviewTitle] = useState('');
-	//TODO:DELETE initial imgList
 	const [imgList, setImgList] = useState<UploadFile[]>([
-		{
-			uid: '-1',
-			name: 'initial.png',
-			status: 'done',
-			url: temPic.userFace
-		}
+		// {
+		// 	uid: '-1',
+		// 	name: 'initial.png',
+		// 	status: 'done',
+		// 	url: temPic.userFace
+		// }
 	]);
 
 	const handleCancel = () => setPreviewOpen(false);
@@ -74,8 +76,8 @@ function Add() {
 		}
 
 		const body: addNoteData = {
-			title: temBody.title ? temBody.title : title,
-			content: temBody.content ? temBody.content : context,
+			title: temBody ? temBody.title : title,
+			content: temBody ? temBody.content : context,
 			pic: temBody.pic
 				? temBody.pic
 				: imgList.map((item) => item.url).join(','),
@@ -89,10 +91,18 @@ function Add() {
 			localStorage.removeItem('token');
 			sessionStorage.setItem('add', JSON.stringify(body));
 			naviagte('/auth');
+			return;
 		}
 		// console.log(imgList,'img--')
 		// console.log(body,'body--')
 		addNote(body);
+		//发布后清空表单、缓存
+		form.resetFields();
+		setImgList([]);
+		if (temBody) {
+			sessionStorage.removeItem('add');
+		}
+		message.success('发布成功');
 	};
 
 	const getPicSignRequest = async () => {
@@ -128,11 +138,36 @@ function Add() {
 
 	useEffect(() => {
 		getPicSignRequest();
-	}, []);
+	}, [user.username]);
+
+	//保留登录之前上传的图片
+	useEffect(() => {
+		if (temBody.pic) {
+			const temPicList: Array<UploadFile> = [];
+			const temPicArray = temBody.pic.split(',');
+
+			if (temPicArray.length === 1) {
+				temPicList.push({
+					uid: uuidv4(),
+					name: uuidv4(),
+					url: `${config.ossUrl}/${temBody.pic}`
+				});
+			} else {
+				temPicArray.map((item: string) =>
+					temPicList.push({
+						uid: uuidv4(),
+						name: uuidv4(),
+						url: `${config.ossUrl}/${item}`
+					})
+				);
+			}
+			setImgList(temPicList);
+		}
+	}, [temBody.pic]);
 
 	return (
 		<div className="add">
-			<Form onFinish={handleSubmit}>
+			<Form form={form} onFinish={handleSubmit}>
 				<Upload
 					action={OSSData?.host}
 					listType="picture-card"
@@ -157,12 +192,12 @@ function Add() {
 				<Form.Item
 					name={'title'}
 					rules={[{ required: true, message: '请填写您的笔记标题' }]}
+					initialValue={temBody?.title}
 				>
 					<Input
 						placeholder="填写一个引人入胜的标题吧"
 						showCount
 						maxLength={100}
-						defaultValue={temBody.title}
 						bordered={false}
 						style={{ marginTop: '2rem' }}
 					/>
@@ -171,11 +206,11 @@ function Add() {
 				<Form.Item
 					name={'context'}
 					rules={[{ required: true, message: '请填写您的笔记内容' }]}
+					initialValue={temBody?.content}
 				>
 					<Input.TextArea
 						placeholder="介绍一下吧"
 						showCount
-						defaultValue={temBody.content}
 						maxLength={300}
 						autoSize
 						bordered={false}
