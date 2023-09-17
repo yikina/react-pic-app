@@ -13,3 +13,10 @@ overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
 }
+
+// * 内容居中
+@mixin center(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -74,3 +74,11 @@
         justify-content: space-around;
     }
 }
+
+.ant-upload-wrapper .ant-upload-list {
+    @include center
+}
+
+.ant-form-item-control-input-content{
+    @include center
+}
