@@ -5,5 +5,6 @@ export default {
 	ossUrl: 'http://yikina-pic-app.oss-cn-beijing.aliyuncs.com',
 	ossBucket: 'yikina-pic-app.oss-cn-beijing.aliyuncs.com',
 	picSign: 'pic_sign',
+	avatarPicSign: 'pic_sign/avatar',
 	addNote: 'notes'
 };

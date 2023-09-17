@@ -40,3 +40,10 @@ export const deletePic = (
 export const addNote = async (body: addNoteData) => {
 	return request('POST', config.addNote, body);
 };
+
+/**
+ * @description 获取用户头像上传oss signature
+ */
+export const getAvatarPicSign = async () => {
+	return request('GET', config.avatarPicSign, {});
+};

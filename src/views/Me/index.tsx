@@ -3,8 +3,9 @@ import { Button, Divider, Empty } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
 import Footer from '&/components/Footer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useUserInfo } from '&/hooks';
+import { InfoDrawer } from './infoDrawer';
 
 function Me() {
 	const naviagte = useNavigate();
@@ -13,7 +14,15 @@ function Me() {
 		naviagte('/auth');
 	};
 	const { user } = useUserInfo();
+	const avatarSrc = user.info.avatar ? user.info.avatar : Pic.userFace;
 
+	const [drawerVisible, setDrawerVisible] = useState(false);
+	const onDrawerOpen = () => {
+		setDrawerVisible(true);
+	};
+	const onDrawerClose = () => {
+		setDrawerVisible(false);
+	};
 	useEffect(() => {
 		if (!user) {
 			logout();
@@ -29,10 +38,18 @@ function Me() {
 			</div>
 
 			<div className="me-header">
-				<img src={Pic.userFace} alt="" />
+				<img src={avatarSrc} alt="" />
 				<div className="me-header-name">
 					<h3>{user?.info.username}</h3>
-					<i className="iconfont icon-wenbenshuru" />
+					<span onClick={onDrawerOpen}>
+						<i className="iconfont icon-wenbenshuru" />
+					</span>
+					<InfoDrawer
+						userId={user?.info.id}
+						drawerVisible={drawerVisible}
+						onDrawerClose={onDrawerClose}
+						logout={logout}
+					/>
 				</div>
 				<div className="tips">
 					<div>

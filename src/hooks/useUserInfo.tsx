@@ -2,7 +2,7 @@ import { loginedData } from '&/types';
 
 export const useUserInfo = () => {
 	const jsonString = localStorage.getItem('user');
-	const user = (jsonString && JSON.parse(jsonString)) || '';
+	const user: loginedData = (jsonString && JSON.parse(jsonString)) || '';
 
 	// 在localStorage中存储用户信息
 	const saveuser = (user: loginedData) => {
