@@ -128,6 +128,11 @@ function Add() {
 		}
 
 		const suffix = file.name.slice(file.name.lastIndexOf('.'));
+		const isPic = ['.jpg', '.png', '.jpeg', '.webp', '.jfif'];
+		if (!isPic.includes(suffix)) {
+			message.info('笔记只能上传图片');
+			return Upload.LIST_IGNORE;
+		}
 		const filename = Date.now() + suffix;
 		// @ts-ignore
 		file.url = OSSData.dir + filename;
