@@ -1,4 +1,4 @@
-import { deletePic, getAvatarPicSign } from '&/api';
+import { deletePic, getAvatarPicSign, update } from '&/api';
 import { Button, Drawer, Form, Input, message, Upload } from 'antd';
 import { useEffect, useState } from 'react';
 import { signData } from '&/types/file';
@@ -8,20 +8,23 @@ import {
 	UploadFile,
 	UploadProps
 } from 'antd/es/upload/interface';
+import { updateBody } from '&/types';
+import { useUserInfo } from '&/hooks';
 
 type InfoDrawerProps = {
 	userId: string;
 	drawerVisible: boolean;
 	onDrawerClose: () => void;
-	logout: () => void;
+	username: string | undefined;
 };
 
 export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 	userId,
 	drawerVisible,
 	onDrawerClose,
-	logout
+	username
 }) => {
+	const { updateuser } = useUserInfo();
 	const [form] = Form.useForm();
 	const [avatar, setAvatar] = useState<UploadFile>();
 	const [OSSData, setOSSData] = useState<signData>();
@@ -36,6 +39,14 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 	const handleRemove = (file: UploadFile) => {
 		deletePic(file.url, OSSData?.signature);
 		setAvatar(undefined);
+	};
+	const handleSubmit = ({ name }: { name: string }) => {
+		const body: updateBody = {
+			id: userId,
+			nickname: name || '',
+			avatar: avatar?.url || ''
+		};
+		updateUserRequest(body);
 	};
 	const getExtraData: UploadProps['data'] = (file) => ({
 		key: file.url,
@@ -61,13 +72,19 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 		const filename = Date.now() + suffix;
 		// @ts-ignore
 		file.url = OSSData.dir + filename;
-		console.log(
-			"🚀 ~ file: infoDrawer.tsx:57 ~ constbeforeUpload:UploadProps['beforeUpload']= ~ OSSData.dir:",
-			OSSData.dir
-		);
-		console.log(file, 'fileuuuu--');
+		console.log(avatar, 'avatar--');
 
 		return file;
+	};
+	const updateUserRequest = async (body: updateBody) => {
+		const [err, res] = await update(body);
+		if (!err && res) {
+			message.success('修改昵称成功');
+			updateuser(res);
+			onDrawerClose();
+		} else {
+			return;
+		}
 	};
 
 	const getAvatarSignRequest = async () => {
@@ -79,6 +96,7 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 
 	useEffect(() => {
 		getAvatarSignRequest();
+		// console.log(avatar, 'avatareffect--');
 	}, [userId]);
 
 	return (
@@ -87,9 +105,9 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 			placement="bottom"
 			onClose={onDrawerClose}
 			open={drawerVisible}
-			height={'60%'}
+			height={'70%'}
 		>
-			<Form form={form}>
+			<Form form={form} onFinish={handleSubmit}>
 				<Upload
 					action={OSSData?.host}
 					listType="picture-circle"
@@ -104,12 +122,16 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 					<>+</>
 				</Upload>
 
+				<h5>用户名：{username}</h5>
+				<span className="text">注：用户名作为登陆凭证，不可更改</span>
+
 				<Form.Item
 					name={'name'}
-					rules={[{ required: true, message: '请输入更改后的用户名' }]}
+					rules={[{ required: true, message: '请输入更改后的昵称' }]}
 				>
 					<Input
-						placeholder="请输入更改后的用户名"
+						placeholder="请输入更改后的昵称"
+						maxLength={20}
 						style={{
 							marginTop: '1rem',
 							display: 'flex',

@@ -1,4 +1,5 @@
 import { request } from '&/service';
+import { updateBody } from '&/types';
 import config from './config';
 
 /**
@@ -26,4 +27,12 @@ export const register = async (body: {
  */
 export const login = async (body: { username: string; password: string }) => {
 	return request('POST', config.login, body);
+};
+
+/**
+ * 用户信息更新，必传，无更新则传空字符串
+ * @body {id:string,nickname:string,avatar:string}
+ */
+export const update = async (body: updateBody) => {
+	return request('PATCH', config.update, body);
 };

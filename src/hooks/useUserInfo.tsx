@@ -9,6 +9,12 @@ export const useUserInfo = () => {
 		const userString = JSON.stringify(user);
 		localStorage.setItem('user', userString);
 	};
+	//修改用户信息
+	const updateuser = (newUser: loginedData['info']) => {
+		const preUser = JSON.parse(localStorage.getItem('user') || '');
+		const newUserString = JSON.stringify({ ...preUser, info: newUser });
+		localStorage.setItem('user', newUserString);
+	};
 
 	// 清空用户信息
 	const deleteuser = () => {
@@ -18,6 +24,7 @@ export const useUserInfo = () => {
 	return {
 		user,
 		saveuser,
-		deleteuser
+		deleteuser,
+		updateuser
 	};
 };

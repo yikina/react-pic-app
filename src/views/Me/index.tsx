@@ -15,6 +15,7 @@ function Me() {
 	};
 	const { user } = useUserInfo();
 	const avatarSrc = user.info.avatar ? user.info.avatar : Pic.userFace;
+	const userName = user.info.nickname ? user.info.nickname : user.info.username;
 
 	const [drawerVisible, setDrawerVisible] = useState(false);
 	const onDrawerOpen = () => {
@@ -40,7 +41,7 @@ function Me() {
 			<div className="me-header">
 				<img src={avatarSrc} alt="" />
 				<div className="me-header-name">
-					<h3>{user?.info.username}</h3>
+					<h3>{userName}</h3>
 					<span onClick={onDrawerOpen}>
 						<i className="iconfont icon-wenbenshuru" />
 					</span>
@@ -48,7 +49,7 @@ function Me() {
 						userId={user?.info.id}
 						drawerVisible={drawerVisible}
 						onDrawerClose={onDrawerClose}
-						logout={logout}
+						username={user?.info.username}
 					/>
 				</div>
 				<div className="tips">

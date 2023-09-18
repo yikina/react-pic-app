@@ -1,9 +1,10 @@
-.me{
-    &-bg{
+.me {
+    &-bg {
         img {
             width: 100%;
             height: 14rem;
         }
+
         i {
             position: absolute;
             top: .5rem;
@@ -13,36 +14,43 @@
         }
 
     }
-    &-header{
+
+    &-header {
         padding: .5rem 2rem;
-        img{
-            position:absolute;
+
+        img {
+            position: absolute;
             top: 12rem;
             width: 5rem;
             height: 5rem;
             border: 2px solid #fff;
             border-radius: 50%;
         }
-        &-name{
-            display:flex;
+
+        &-name {
+            display: flex;
             align-items: center;
-            height:2rem;
+            height: 2rem;
             margin-top: 2.5rem;
+
             h3 {
                 margin-bottom: 2rem;
                 padding-left: .5rem;
             }
 
             i {
-                line-height: 2rem;margin-left: 1rem;
+                line-height: 2rem;
+                margin-left: 1rem;
                 font-size: 1.3rem;
                 padding-bottom: 0.5rem;
 
-                
+
             }
         }
-        .tips{
+
+        .tips {
             display: flex;
+
             div {
                 display: flex;
                 padding-right: 1rem;
@@ -55,7 +63,8 @@
                 }
             }
         }
-        .ip{
+
+        .ip {
             margin-top: .5rem;
 
             display: flex;
@@ -69,16 +78,27 @@
 
         }
     }
-    &-content{
+
+    &-content {
         display: flex;
         justify-content: space-around;
     }
 }
 
-.ant-upload-wrapper .ant-upload-list {
-    @include center
-}
+    .ant-upload-wrapper .ant-upload-list {
+        @include center
+    }
 
-.ant-form-item-control-input-content{
-    @include center
-}
+    .ant-form-item-control-input-content {
+        @include center
+    }
+
+    h5 {
+        @include center
+    }
+
+    .text {
+        @include center;
+        color: $basicColor;
+        font-size: $fontsizeUnit * 1.2;
+    }
