@@ -127,7 +127,8 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 
 				<Form.Item
 					name={'name'}
-					rules={[{ required: true, message: '请输入更改后的昵称' }]}
+					rules={[{ message: '请输入更改后的昵称' }]}
+					initialValue=""
 				>
 					<Input
 						placeholder="请输入更改后的昵称"

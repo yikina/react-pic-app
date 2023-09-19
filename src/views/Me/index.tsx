@@ -6,6 +6,7 @@ import Footer from '&/components/Footer';
 import { useEffect, useState } from 'react';
 import { useUserInfo } from '&/hooks';
 import { InfoDrawer } from './infoDrawer';
+import config from '&/api/files/config';
 
 function Me() {
 	const naviagte = useNavigate();
@@ -14,7 +15,9 @@ function Me() {
 		naviagte('/auth');
 	};
 	const { user } = useUserInfo();
-	const avatarSrc = user.info.avatar ? user.info.avatar : Pic.userFace;
+	const avatarSrc = user.info.avatar
+		? config.ossUrl + '/' + user.info.avatar
+		: Pic.userFace;
 	const userName = user.info.nickname ? user.info.nickname : user.info.username;
 
 	const [drawerVisible, setDrawerVisible] = useState(false);
