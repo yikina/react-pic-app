@@ -79,7 +79,7 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 	const updateUserRequest = async (body: updateBody) => {
 		const [err, res] = await update(body);
 		if (!err && res) {
-			message.success('修改昵称成功');
+			message.success('修改成功');
 			updateuser(res);
 			onDrawerClose();
 		} else {
