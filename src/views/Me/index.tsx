@@ -53,6 +53,7 @@ function Me() {
 						drawerVisible={drawerVisible}
 						onDrawerClose={onDrawerClose}
 						username={user?.info.username}
+						preAvatar={user?.info.avatar}
 					/>
 				</div>
 				<div className="tips">

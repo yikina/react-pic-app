@@ -80,7 +80,6 @@ function Add() {
 			pic: temBody.pic
 				? temBody.pic
 				: imgList.map((item) => item.url).join(','),
-			avatar: user?.info.avatar,
 			user_id: user?.info.id
 		};
 
@@ -221,7 +220,7 @@ function Add() {
 					/>
 				</Form.Item>
 				<Form.Item>
-					<Button block style={{ marginTop: '4rem' }} htmlType={'submit'}>
+					<Button block style={{ marginTop: '2rem' }} htmlType={'submit'}>
 						发布
 					</Button>
 				</Form.Item>

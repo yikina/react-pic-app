@@ -16,13 +16,15 @@ type InfoDrawerProps = {
 	drawerVisible: boolean;
 	onDrawerClose: () => void;
 	username: string | undefined;
+	preAvatar?: string;
 };
 
 export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 	userId,
 	drawerVisible,
 	onDrawerClose,
-	username
+	username,
+	preAvatar
 }) => {
 	const { updateuser } = useUserInfo();
 	const [form] = Form.useForm();
@@ -80,6 +82,9 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 		const [err, res] = await update(body);
 		if (!err && res) {
 			message.success('修改成功');
+			if (preAvatar) {
+				deletePic(preAvatar, OSSData?.signature);
+			}
 			updateuser(res);
 			onDrawerClose();
 		} else {
