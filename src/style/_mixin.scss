@@ -1,5 +1,6 @@
 // * 统一页面链接格式
 @mixin normalLink {
+    font-size: 1rem;
     color: black;
     &.active{
         color:rgb(150, 143, 141)
