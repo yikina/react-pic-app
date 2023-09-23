@@ -2,9 +2,10 @@
 .header{
    width:100%;
    height:8vh;
-   position: fixed;
+   position: sticky;
    display:flex;
    justify-content: space-around;
+   background-color: #fff;
    align-items: center;
    top:0rem;
    left:0rem;
