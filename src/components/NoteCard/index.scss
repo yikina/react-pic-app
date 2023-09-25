@@ -1,0 +1,34 @@
+.noteCard {
+    display: inline-flex;
+    flex-flow: column;
+    margin: 0.2em;
+    height: 42%;
+    width: 100%;
+    break-inside: avoid;
+    margin-bottom: 1rem;
+
+    .cover {
+        display: inherit;
+        margin-bottom: 0.5rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+
+        }
+
+    }
+.text{
+    .content {
+        font-size: $fontsizeUnit;
+        display: flex;
+        align-items: center;
+        .name{
+            @include ellipsis(80%);
+        }
+        .collection{
+            margin-left: auto;
+        }
+    }
+}}

@@ -47,3 +47,10 @@ export const addNote = async (body: addNoteData) => {
 export const getAvatarPicSign = async () => {
 	return request('GET', config.avatarPicSign, {});
 };
+
+/**
+ * @description 获取推荐笔记
+ */
+export const getRecommandNotes = async (skipNum: number) => {
+	return request('GET', config.addNote, {}, { skip: skipNum });
+};

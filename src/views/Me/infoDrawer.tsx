@@ -16,7 +16,7 @@ type InfoDrawerProps = {
 	drawerVisible: boolean;
 	onDrawerClose: () => void;
 	username: string | undefined;
-	preAvatar?: string;
+	preAvatar?: string | null;
 };
 
 export const InfoDrawer: React.FC<InfoDrawerProps> = ({

@@ -8,7 +8,7 @@ export interface loginedData {
 	info: {
 		username?: string;
 		nickname?: string;
-		avatar?: string;
+		avatar?: string | null;
 		id: string;
 		fan: number;
 		following: number;
@@ -20,4 +20,13 @@ export interface updateBody {
 	id: string;
 	nickname: string;
 	avatar: string;
+}
+
+export interface notesData {
+	id: string;
+	title: string;
+	content: string;
+	pic: string;
+	collection: number;
+	user: loginedData['info'];
 }
