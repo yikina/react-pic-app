@@ -54,3 +54,10 @@ export const getAvatarPicSign = async () => {
 export const getRecommandNotes = async (skipNum: number) => {
 	return request('GET', config.addNote, {}, { skip: skipNum });
 };
+
+/**
+ * @description 搜索笔记标题
+ */
+export const searchNotes = async (keywords: string) => {
+	return request('GET', config.searchNote, {}, { keyword: keywords });
+};

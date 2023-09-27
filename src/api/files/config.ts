@@ -6,5 +6,6 @@ export default {
 	ossBucket: 'yikina-pic-app.oss-cn-beijing.aliyuncs.com',
 	picSign: 'pic_sign',
 	avatarPicSign: 'pic_sign/avatar',
-	addNote: 'notes'
+	addNote: 'notes',
+	searchNote: 'notes/search'
 };
