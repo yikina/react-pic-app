@@ -1,12 +1,13 @@
 import config from '&/api/files/config';
 import temPic from '&/assets/temPic';
+import { picObj } from '&/types';
 import { Avatar } from 'antd';
 import './index.scss';
 
 type NoteCardProps = {
 	title: string;
 	content: string;
-	pic: string;
+	pic: picObj[];
 	collection: number;
 	avatar: string | null | undefined;
 	nickname: string | undefined;
@@ -22,9 +23,7 @@ export const NoteCard: React.FC<NoteCardProps> = ({
 	username
 }) => {
 	const avatarSrc = avatar ? config.ossUrl + '/' + avatar : temPic.userFace;
-	const picSrc = pic.includes(',')
-		? config.ossUrl + '/' + pic.split(',')[0]
-		: config.ossUrl + '/' + pic;
+	const picSrc = config.ossUrl + '/' + pic[0].url;
 	const realname = nickname ? nickname : username;
 
 	return (

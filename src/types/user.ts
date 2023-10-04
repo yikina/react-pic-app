@@ -22,11 +22,18 @@ export interface updateBody {
 	avatar: string;
 }
 
+export type picObj = {
+	url: string;
+	width: number;
+	height: number;
+	hwscale: number;
+};
+
 export interface notesData {
 	id: string;
 	title: string;
 	content: string;
-	pic: string;
+	pic: picObj[];
 	collection: number;
 	user: loginedData['info'];
 }
