@@ -11,10 +11,10 @@ import config from '&/api/files/config';
 function Me() {
 	const naviagte = useNavigate();
 	const logout = () => {
-		localStorage.removeItem('token');
+		deleteuser();
 		naviagte('/auth');
 	};
-	const { user } = useUserInfo();
+	const { user, deleteuser } = useUserInfo();
 	const avatarSrc = user.info.avatar
 		? config.ossUrl + '/' + user.info.avatar
 		: Pic.userFace;
