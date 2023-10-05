@@ -1,0 +1,11 @@
+
+.result {
+    &-text{
+        color:$basicColor
+    }
+    overflow-y: auto;
+    .noteCard{
+        margin:0rem;
+        margin-bottom: 1rem;
+    }
+}

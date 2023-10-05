@@ -1,12 +1,19 @@
 import { Input } from 'antd';
 import './index.scss';
 
-function SearchLine() {
-	const onSearch = (value: string) => console.log(value);
+type SearchLineProps = {
+	handleSearch: (value: string) => void;
+};
+
+const SearchLine: React.FC<SearchLineProps> = ({ handleSearch }) => {
+	const onSearch = (value: string) => {
+		value && handleSearch(value);
+	};
+
 	return (
 		<div className="search-line">
 			<Input.Search placeholder="搜索笔记、作者、标签" onSearch={onSearch} />
 		</div>
 	);
-}
+};
 export default SearchLine;
