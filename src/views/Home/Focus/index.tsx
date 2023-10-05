@@ -2,7 +2,7 @@ import { Empty } from 'antd';
 import { useUserInfo } from '&/hooks';
 
 function Focus() {
-	const user = useUserInfo();
+	const { user } = useUserInfo();
 
 	return (
 		<div>
