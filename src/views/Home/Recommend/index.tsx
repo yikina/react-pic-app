@@ -5,7 +5,7 @@ import './index.scss';
 import Waterfall from '&/components/Waterfall';
 import { NoteInfo } from '&/components/NoteInfo';
 
-function Recommend() {
+function Recommend({ col }: { col: number }) {
 	const scrollRef = useRef<HTMLDivElement>(null);
 
 	const [data, setData] = useState<NoteInfoProps | {}>({});
@@ -23,6 +23,7 @@ function Recommend() {
 	return (
 		<div className="container" ref={scrollRef}>
 			<Waterfall
+				cols={col}
 				scrollRef={scrollRef}
 				getList={getRecommandNotes}
 				itemRender={(item, i) => {

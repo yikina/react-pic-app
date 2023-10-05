@@ -1,9 +1,10 @@
 import Footer from '&/components/Footer';
+import Recommend from '&/views/Home/Recommend';
 
 const Square = () => {
 	return (
 		<div>
-			这里是Square
+			<Recommend col={1} />
 			<Footer />
 		</div>
 	);
