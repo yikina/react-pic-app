@@ -26,7 +26,7 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 	username,
 	preAvatar
 }) => {
-	const { updateuser } = useUserInfo();
+	const { updateuser, user } = useUserInfo();
 	const [form] = Form.useForm();
 	const [avatar, setAvatar] = useState<UploadFile>();
 	const [OSSData, setOSSData] = useState<signData>();
@@ -79,7 +79,7 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 		return file;
 	};
 	const updateUserRequest = async (body: updateBody) => {
-		const [err, res] = await update(body);
+		const [err, res] = await update(body, user.accessToken);
 		if (!err && res) {
 			message.success('修改成功');
 			if (preAvatar) {
@@ -93,7 +93,9 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 	};
 
 	const getAvatarSignRequest = async () => {
-		const [err, res]: [any, signData] = await getAvatarPicSign();
+		const [err, res]: [any, signData] = await getAvatarPicSign(
+			user.accessToken
+		);
 		if (!err && res) {
 			setOSSData(res);
 		}

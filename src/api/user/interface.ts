@@ -33,6 +33,6 @@ export const login = async (body: { username: string; password: string }) => {
  * 用户信息更新，必传，无更新则传空字符串
  * @body {id:string,nickname:string,avatar:string}
  */
-export const update = async (body: updateBody) => {
-	return request('PATCH', config.update, body);
+export const update = async (body: updateBody, token: string) => {
+	return request('PATCH', config.update, body, {}, token);
 };

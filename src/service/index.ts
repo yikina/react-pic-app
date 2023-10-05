@@ -58,8 +58,12 @@ export const request = (
 	url: string,
 	data: IAnyObject,
 	params: IAnyObject = {},
+	token?: string,
 	clearFn?: IFn
 ): Promise<[any, any]> => {
+	if (token) {
+		axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+	}
 	return new Promise((resolve) => {
 		let requestPromise: Promise<AxiosResponse>;
 

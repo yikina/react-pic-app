@@ -7,8 +7,8 @@ import config from './config';
  * @description 获取oss上传signature
  *
  */
-export const getPicSign = async () => {
-	return request('GET', config.picSign, {});
+export const getPicSign = async (token: string) => {
+	return request('GET', config.picSign, {}, {}, token);
 };
 
 /**
@@ -37,15 +37,15 @@ export const deletePic = (
  * @description 发布笔记
  * @body addNoteData
  */
-export const addNote = async (body: addNoteData) => {
-	return request('POST', config.addNote, body);
+export const addNote = async (body: addNoteData, token: string) => {
+	return request('POST', config.addNote, body, {}, token);
 };
 
 /**
  * @description 获取用户头像上传oss signature
  */
-export const getAvatarPicSign = async () => {
-	return request('GET', config.avatarPicSign, {});
+export const getAvatarPicSign = async (token: string) => {
+	return request('GET', config.avatarPicSign, {}, {}, token);
 };
 
 /**

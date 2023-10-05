@@ -93,7 +93,7 @@ function Add() {
 		}
 		// console.log(imgList,'img--')
 		// console.log(body,'body--')
-		addNote(body);
+		addNote(body, user.accessToken);
 		//发布后清空表单、缓存
 		form.resetFields();
 		setImgList([]);
@@ -104,7 +104,7 @@ function Add() {
 	};
 
 	const getPicSignRequest = async () => {
-		const [err, res]: [any, signData] = await getPicSign();
+		const [err, res]: [any, signData] = await getPicSign(user.accessToken);
 		if (!err && res) {
 			setOSSData(res);
 		}
