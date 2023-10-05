@@ -1,11 +1,24 @@
 import { getRecommandNotes } from '&/api';
-import { NoteCard } from '&/components/NoteCard';
-import { useRef } from 'react';
+import { NoteCard, NoteInfoProps } from '&/components/NoteCard';
+import { useRef, useState } from 'react';
 import './index.scss';
 import Waterfall from '&/components/Waterfall';
+import { NoteInfo } from '&/components/NoteInfo';
 
 function Recommend() {
 	const scrollRef = useRef<HTMLDivElement>(null);
+
+	const [data, setData] = useState<NoteInfoProps | {}>({});
+	const [drawerVisible, setDrawerVisible] = useState(false);
+	const onDrawerOpen = () => {
+		setDrawerVisible(true);
+	};
+	const onDrawerClose = () => {
+		setDrawerVisible(false);
+	};
+	const convertData = (data: NoteInfoProps) => {
+		setData(data);
+	};
 
 	return (
 		<div className="container" ref={scrollRef}>
@@ -23,9 +36,16 @@ function Recommend() {
 							avatar={item.user.avatar}
 							nickname={item.user.nickname}
 							username={item.user.username}
+							onDrawerOpen={onDrawerOpen}
+							convertData={convertData}
 						/>
 					);
 				}}
+			/>
+			<NoteInfo
+				drawerVisible={drawerVisible}
+				onDrawerClose={onDrawerClose}
+				data={data}
 			/>
 		</div>
 	);
