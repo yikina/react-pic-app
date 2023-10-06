@@ -130,7 +130,7 @@ export const InfoDrawer: React.FC<InfoDrawerProps> = ({
 				</Upload>
 
 				<h5>用户名：{username}</h5>
-				<span className="text">注：用户名作为登陆凭证，不可更改</span>
+				<span className="me-text">注：用户名作为登陆凭证，不可更改</span>
 
 				<Form.Item
 					name={'name'}

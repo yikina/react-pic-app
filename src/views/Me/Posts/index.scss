@@ -1,0 +1,27 @@
+.Posts {
+    width: 100%;
+
+    &-notes {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1rem;
+        flex-flow: row wrap;
+
+        &-card {
+            width: 49%;
+            height: 100%;
+
+            .noteCard {
+                .cover {
+                    height: 30vh;
+
+                    img {
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+
+            }
+        }
+    }
+}

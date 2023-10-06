@@ -7,5 +7,6 @@ export default {
 	picSign: 'pic_sign',
 	avatarPicSign: 'pic_sign/avatar',
 	addNote: 'notes',
-	searchNote: 'notes/search'
+	searchNote: 'notes/search',
+	getPosts: 'notes/posts'
 };

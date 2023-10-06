@@ -61,3 +61,10 @@ export const getRecommandNotes = async (skipNum: number) => {
 export const searchNotes = async (keywords: string) => {
 	return request('GET', config.searchNote, {}, { keyword: keywords });
 };
+
+/**
+ * @description 获取用户发布的笔记
+ */
+export const getPosts = async (username: string, token: string) => {
+	return request('GET', config.getPosts, {}, { username: username }, token);
+};

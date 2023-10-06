@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useUserInfo } from '&/hooks';
 import { InfoDrawer } from './infoDrawer';
 import config from '&/api/files/config';
+import Posts from './Posts';
 
 function Me() {
 	const naviagte = useNavigate();
@@ -20,7 +21,15 @@ function Me() {
 		: Pic.userFace;
 	const userName = user.info.nickname ? user.info.nickname : user.info.username;
 
+	const [collectionVisible, setCollectionVisible] = useState(false);
 	const [drawerVisible, setDrawerVisible] = useState(false);
+
+	const onCollectionTrue = () => {
+		setCollectionVisible(true);
+	};
+	const onCollectionFalse = () => {
+		setCollectionVisible(false);
+	};
 	const onDrawerOpen = () => {
 		setDrawerVisible(true);
 	};
@@ -76,15 +85,19 @@ function Me() {
 			</div>
 
 			<div className="me-content">
-				<Button type="text" block>
+				<Button type="text" block onClick={onCollectionTrue}>
 					我收藏的
 				</Button>
-				<Button type="text" block>
+				<Button type="text" block onClick={onCollectionFalse}>
 					我发表的
 				</Button>
 			</div>
 			<Divider />
-			<Empty />
+			{collectionVisible ? (
+				<Empty />
+			) : (
+				<Posts queryname={user.info.username} token={user.accessToken} />
+			)}
 			<Footer />
 		</div>
 	);
