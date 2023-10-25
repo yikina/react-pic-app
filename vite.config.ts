@@ -38,7 +38,14 @@ export default defineConfig(({ command, mode }) => {
 			drop: isBuild ? ['console'] : []
 		},
 		server: {
-			port: 3022 //启动端口
+			port: 3022, //启动端口
+			proxy: {
+				'/picapi': {
+					target: 'http://localhost:3000/',
+					changeOrigin: true,
+					rewrite: (path) => path.replace(/^\/picapi/, '')
+				}
+			}
 		}
 	};
 });
